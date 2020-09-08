@@ -12,7 +12,7 @@ for i in ../fastq/*_1.fastq;
 do
 g=`echo $i|cut -d '/' -f 3`
 i=${g%*_1.fastq*}
-/software_users/caojiabao/16s_pipeline/FLASH-1.2.11-Linux-x86_64/flash -o $i ../fastq/${i}_1.fastq ../fastq/${i}_2.fastq -M 250 -m 60 -t 20;
+/software_users/caojiabao/16s_pipeline/FLASH-1.2.11-Linux-x86_64/flash -o $i ../fastq/${i}_1.fastq ../fastq/${i}_2.fastq -t 20;
 /software_users/caojiabao/16s_pipeline/fastx_toolkit/bin/fastq_quality_filter -i ${i}.extendedFrags.fastq -p 90 -q 25 -Q33|/software_users/caojiabao/16s_pipeline/fastx_toolkit/bin/fastq_to_fasta -o ${i}.fasta -Q33 
 vsearch --uchime_ref ${i}.fasta --db /software_users/caojiabao/database/RDP_database/rdp_16s_v16.fa -strand plus --nonchimeras ${i}.good.fasta --threads 20
 done
