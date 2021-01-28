@@ -133,6 +133,16 @@ qiime tools export \
 --input-path taxonomy.qza \
 --output-path phyloseq
 
+#分级注释属水平
+qiime taxa collapse \
+  --i-table otu_table-rename.qza \
+  --i-taxonomy taxonomy.qza \
+  --p-level 6 \
+  --o-collapsed-table otu_table_genus.qza
+
+qiime tools export --input-path otu_table_genus.qza --output-path phyloseq
+biom convert -i phyloseq/feature-table.biom -o phyloseq/otu_genus_table.tsv --to-tsv
+
 #6.构建进化树（比对代表性序列构建系统发育树）
 time qiime phylogeny align-to-tree-mafft-fasttree \
  --i-sequences rep-seqs-rename.qza \
