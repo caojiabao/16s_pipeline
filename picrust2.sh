@@ -5,7 +5,7 @@ picrust2_pipeline.py -s otu.fasta -i otu_table.txt -o picrust2_result -p 4
 
 #determine KEGG pathway abundances from the predicted KO abundances
 #生成KEGG pathway 功能分析
-pathway_pipeline.py -i KO_metagenome_out/pred_metagenome_unstrat.tsv -o KEGG_pathways_out 、
+pathway_pipeline.py -i KO_metagenome_out/pred_metagenome_unstrat.tsv -o KEGG_pathways_out \
 --no_regroup --map picrust2/picrust2/default_files/pathway_mapfiles/KEGG_pathways_to_KO.tsv
 
 #添加功能描述，只看KEGG通路可以运行到此处
